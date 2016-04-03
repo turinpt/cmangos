@@ -343,6 +343,32 @@ void WorldSession::HandleCharCreateOpcode(WorldPacket& recv_data)
         pNewChar->setCinematic(1);                          // not show intro
 
     pNewChar->SetAtLoginFlag(AT_LOGIN_FIRST);               // First login
+	
+	// All Skills
+	pNewChar->SetSkill(136, 300, 300);
+	pNewChar->SetSkill(44, 300, 300);
+	pNewChar->SetSkill(45, 300, 300);
+	pNewChar->SetSkill(226, 300, 300);
+	pNewChar->SetSkill(173, 300, 300);
+	pNewChar->SetSkill(129, 300, 300);
+	pNewChar->SetSkill(473, 300, 300);
+	pNewChar->SetSkill(46, 300, 300);
+	pNewChar->SetSkill(182, 300, 300);
+	pNewChar->SetSkill(54, 300, 300);
+	pNewChar->SetSkill(186, 300, 300);
+	pNewChar->SetSkill(229, 300, 300);
+	pNewChar->SetSkill(162, 300, 300);
+	pNewChar->SetSkill(136, 300, 300);
+	pNewChar->SetSkill(43, 300, 300);
+	pNewChar->SetSkill(197, 300, 300);
+	pNewChar->SetSkill(172, 300, 300);
+	pNewChar->SetSkill(160, 300, 300);
+	pNewChar->SetSkill(55, 300, 300);
+	pNewChar->SetSkill(228, 300, 300);
+	pNewChar->SetSkill(176, 300, 300);
+	pNewChar->SetSkill(95, 300, 300);
+
+	//pNewChar->CastSpell(pNewChar, 33392, false);  riding
 
     // Player created, save it now
     pNewChar->SaveToDB();

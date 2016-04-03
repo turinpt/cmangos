@@ -3331,17 +3331,19 @@ bool Unit::AddSpellAuraHolder(SpellAuraHolder* holder)
         for (SpellAuraHolderMap::iterator iter = spair.first; iter != spair.second; ++iter)
         {
             SpellAuraHolder* foundHolder = iter->second;
-            if (foundHolder->GetCasterGuid() == holder->GetCasterGuid())
-            {
-                // Aura can stack on self -> Stack it;
-                if (aurSpellInfo->StackAmount)
-                {
-                    // can be created with >1 stack by some spell mods
-                    foundHolder->ModStackAmount(holder->GetStackAmount());
-                    delete holder;
-                    return false;
-                }
-
+            bool isSameCaster = foundHolder->GetCasterGuid() == holder->GetCasterGuid();
+			
+			// Aura can stack on self -> Stack it;
+			if ((isSameCaster || !foundHolder->GetSpellProto()->HasAttribute(SPELL_ATTR_EX3_UNK7)) && aurSpellInfo->StackAmount)
+			{
+				// can be created with >1 stack by some spell mods
+				foundHolder->ModStackAmount(holder->GetStackAmount());
+				delete holder;
+				return false;
+			}
+			
+			if (isSameCaster)
+			{
                 // Check for coexisting Weapon-proced Auras
                 if (holder->IsWeaponBuffCoexistableWith(foundHolder))
                     continue;

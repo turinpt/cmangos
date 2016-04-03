@@ -1,0 +1,11 @@
+2016-03-27 15:14:39 CMaNGOS Classic/0.18 (2016-03-23 15:40:39 - 5a2a1b8809d11396227f2dc6ac21aa206bc5432f) for Linux_x64 (little-endian) [realm-daemon]
+2016-03-27 15:14:39 <Ctrl-C> to stop.
+
+2016-03-27 15:14:39 Using configuration file /home/ubuntu/mangos/run/etc/realmd.conf.
+2016-03-27 15:14:39 Login Database total connections: 2
+2016-03-27 15:14:39 MySQL client library: 5.5.47
+2016-03-27 15:14:39 MySQL server ver: 5.5.47-0ubuntu0.14.04.1 
+2016-03-27 15:14:39 MySQL client library: 5.5.47
+2016-03-27 15:14:39 MySQL server ver: 5.5.47-0ubuntu0.14.04.1 
+2016-03-27 15:14:39 Added realm id 1, name 'MaNGOS'
+2016-03-27 15:14:41 Halting process...
