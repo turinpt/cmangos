@@ -369,7 +369,11 @@ void WorldSession::HandleCharCreateOpcode(WorldPacket& recv_data)
 	pNewChar->SetSkill(95, 300, 300);
 
 	FactionEntry const* argentDawn = sFactionStore.LookupEntry(529);
-	pNewChar->GetReputationMgr().ModifyReputation(argentDawn, 2);
+	pNewChar->GetReputationMgr().ModifyReputation(argentDawn, 8);
+
+	FactionEntry const* stormpike = sFactionStore.LookupEntry(730);
+	pNewChar->GetReputationMgr().ModifyReputation(stormpike, 8);
+	
 
     // Player created, save it now
     pNewChar->SaveToDB();
