@@ -368,7 +368,8 @@ void WorldSession::HandleCharCreateOpcode(WorldPacket& recv_data)
 	pNewChar->SetSkill(176, 300, 300);
 	pNewChar->SetSkill(95, 300, 300);
 
-	//pNewChar->CastSpell(pNewChar, 33392, false);  riding
+	FactionEntry const* argentDawn = sFactionStore.LookupEntry(529);
+	pNewChar->GetReputationMgr().ModifyReputation(argentDawn, 2);
 
     // Player created, save it now
     pNewChar->SaveToDB();
