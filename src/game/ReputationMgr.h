@@ -116,12 +116,12 @@ class ReputationMgr
         void SendInitialReputations();
         void SendForceReactions();
         void SendState(FactionState const* faction);
+		bool SetOneFactionReputation(FactionEntry const* factionEntry, int32 standing, bool incremental);
 
     private:                                                // internal helper functions
         void Initialize();
         uint32 GetDefaultStateFlags(const FactionEntry* factionEntry) const;
         bool SetReputation(FactionEntry const* factionEntry, int32 standing, bool incremental);
-        bool SetOneFactionReputation(FactionEntry const* factionEntry, int32 standing, bool incremental);
         void SetVisible(FactionState* faction);
         void SetAtWar(FactionState* faction, bool atWar);
         void SetInactive(FactionState* faction, bool inactive);

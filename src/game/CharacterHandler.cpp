@@ -368,13 +368,6 @@ void WorldSession::HandleCharCreateOpcode(WorldPacket& recv_data)
 	pNewChar->SetSkill(176, 300, 300);
 	pNewChar->SetSkill(95, 300, 300);
 
-	FactionEntry const* argentDawn = sFactionStore.LookupEntry(529);
-	pNewChar->GetReputationMgr().SetReputation(argentDawn, 8);
-
-	FactionEntry const* stormpike = sFactionStore.LookupEntry(730);
-	pNewChar->GetReputationMgr().SetReputation(stormpike, 8);
-	
-
     // Player created, save it now
     pNewChar->SaveToDB();
     charcount += 1;
@@ -667,8 +660,22 @@ void WorldSession::HandlePlayerLogin(LoginQueryHolder* holder)
         SendNotification(LANG_RESET_TALENTS);               // we can use SMSG_TALENTS_INVOLUNTARILY_RESET here
     }
 
+	// Reputations
+	if (pCurrChar->HasAtLoginFlag(AT_LOGIN_FIRST))
+	{
+		ReputationMgr repManager = pCurrChar->GetReputationMgr();
+
+		int maxRep = 42999;
+		repManager.SetReputation(sFactionStore.LookupEntry(529), maxRep); // AD
+		repManager.SetReputation(sFactionStore.LookupEntry(730), maxRep); // AV
+		repManager.SetReputation(sFactionStore.LookupEntry(890), maxRep); // WSG
+		repManager.SetReputation(sFactionStore.LookupEntry(509), maxRep); // AB
+	}
+
     if (pCurrChar->HasAtLoginFlag(AT_LOGIN_FIRST))
         pCurrChar->RemoveAtLoginFlag(AT_LOGIN_FIRST);
+
+	
 
     // show time before shutdown if shutdown planned.
     if (sWorld.IsShutdowning())
